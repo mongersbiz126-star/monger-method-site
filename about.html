@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Monger Method</title>
+  <meta name="description" content="Kenneth — personal trainer, movement educator, and the person behind the Monger Method. The origin story, the formative client experience, and why the method exists." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Page Hero ────────────────────────────────────────── */
+    .page-hero {
+      padding: 9rem 0 5rem;
+      background: var(--black);
+      position: relative;
+      border-bottom: 1px solid var(--charcoal-2);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--orange);
+    }
+    .page-hero__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .page-hero p {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      max-width: 500px;
+      margin-top: 1rem;
+    }
+    .page-hero__badge {
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-2);
+      padding: 2rem;
+    }
+    .page-hero__badge .eyebrow { margin-bottom: 1rem; display: block; }
+    .page-hero__badge ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .page-hero__badge ul li {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .page-hero__badge ul li::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── Origin story —────────────────────────────────────── */
+    .story { padding: 6rem 0; background: var(--charcoal); }
+
+    .story__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .story__timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .story__timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--orange), rgba(200,114,42,0.1));
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      padding-bottom: 2.25rem;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 42px;
+      height: 42px;
+      background: var(--black);
+      border: 1px solid var(--charcoal-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      position: relative;
+      z-index: 1;
+      transition: all 0.2s;
+    }
+    .timeline-item:hover .timeline-dot {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .timeline-body { padding-top: 0.5rem; }
+    .timeline-body h4 { font-size: 0.92rem; margin-bottom: 0.35rem; }
+    .timeline-body p  { font-size: 0.85rem; opacity: 0.6; line-height: 1.65; margin: 0; }
+
+    .story__text p { opacity: 0.75; font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .story__pullquote {
+      border-left: 3px solid var(--orange);
+      padding: 1.25rem 1.5rem;
+      background: var(--black);
+      margin: 2rem 0;
+    }
+    .story__pullquote p {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.6;
+      color: var(--cream);
+      opacity: 1 !important;
+      margin: 0;
+    }
+
+    /* ── Values ───────────────────────────────────────────── */
+    .values { padding: 6rem 0; background: var(--black); }
+
+    .values__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--charcoal-2);
+      border: 1px solid var(--charcoal-2);
+      margin-top: 3rem;
+    }
+
+    .value-box {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+    .value-box:hover { background: var(--charcoal); }
+
+    .value-box__num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .value-box h4 { margin-bottom: 0.6rem; }
+    .value-box p  { font-size: 0.875rem; opacity: 0.6; margin: 0; line-height: 1.7; }
+
+    /* ── CTA ──────────────────────────────────────────────── */
+    .about-cta {
+      padding: 6rem 0;
+      background: var(--charcoal);
+      text-align: center;
+    }
+    .about-cta p { max-width: 480px; margin: 1rem auto 2rem; opacity: 0.65; }
+
+    @media (max-width: 860px) {
+      .page-hero__inner { grid-template-columns: 1fr; gap: 2rem; }
+      .story__inner { grid-template-columns: 1fr; gap: 3rem; }
+      .values__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .values__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">MM</div>
+        Monger Method
+      </a>
+      <ul class="nav__links">
+        <li><a href="method.html">The Method</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="programs.html#coaching" class="nav__cta">Work With Me</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ──────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="fade-in">
+        <span class="eyebrow">The Person Behind the Method</span>
+        <h1>Kenneth</h1>
+        <p>Personal trainer. Movement educator. The person who realized that most training programs have the order exactly backwards — and decided to build one that doesn't.</p>
+        <div class="mt-4" style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="programs.html#coaching" class="btn btn-primary">Work With Me →</a>
+          <a href="method.html" class="btn btn-outline">The Method →</a>
+        </div>
+      </div>
+      <div class="page-hero__badge fade-in">
+        <span class="eyebrow">Background</span>
+        <ul>
+          <li>Track & field — sprints and jumps</li>
+          <li>Pickup sports and recreational competition throughout</li>
+          <li>Weightlifting — self-taught, then formalized</li>
+          <li>Personal trainer — certified before the pandemic</li>
+          <li>Training clients through lockdown and beyond</li>
+          <li>Monger Method — built from the ground up</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ORIGIN STORY ───────────────────────────────────── -->
+  <section class="story">
+    <div class="story__inner">
+      <div class="story__timeline fade-in">
+        <span class="eyebrow" style="margin-bottom:1.5rem;display:block;">The Timeline</span>
+        <div class="timeline-item">
+          <div class="timeline-dot">90s</div>
+          <div class="timeline-body">
+            <h4>Movement as Identity</h4>
+            <p>Growing up in track, sprints and jumps wired a relationship with the body that most people never develop: movement as something that can be trained, not just done.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">00s</div>
+          <div class="timeline-body">
+            <h4>Pickup Sports & The Weight Room</h4>
+            <p>Basketball courts, recreational leagues, and eventually the weight room. Self-taught under load, learning the hard way what the body tolerates and what it doesn't.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2019</div>
+          <div class="timeline-body">
+            <h4>Becoming a Trainer</h4>
+            <p>Certification. The formal language to describe what movement had always felt like. Started working with clients — and immediately encountered a problem the certification didn't prepare him for.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2020</div>
+          <div class="timeline-body">
+            <h4>The Defining Client</h4>
+            <p>A client came in injured. The standard approach — rest, then reload — wasn't going to work. This forced a question: what actually needs to happen first? The answer became the method.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">Now</div>
+          <div class="timeline-body">
+            <h4>The Monger Method</h4>
+            <p>Seven sections. A complete system. Built from breath up — and tested on real bodies with real histories.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story__text fade-in">
+        <span class="eyebrow">The Origin</span>
+        <h2>The Question That Built the System</h2>
+        <p>
+          There was a client — a serious one, a former athlete who had put time in the gym for years — who came to train with an injury that had been unresolved for months. Not catastrophic. Just stubborn. The kind that keeps coming back because no one has addressed the thing underneath it.
+        </p>
+        <p>
+          The standard approach in that situation is to work around it: modify the exercise, reduce the load, be patient. That approach produces the same result it always produces — someone who can train until they can't, and then can't again.
+        </p>
+        <div class="story__pullquote">
+          <p>"The injury wasn't the problem. The injury was the symptom. The problem was that the body had never been taught the prerequisites for the demands being placed on it."</p>
+        </div>
+        <p>
+          That realization forced a rebuild of every assumption about how training should be sequenced. Not because the standard approach is wrong about everything — but because it starts in the middle. It assumes a foundation that most people don't actually have.
+        </p>
+        <p>
+          Breath control is assumed. Foundational movement quality is assumed. Stability through range is assumed. The myofascial slings that transmit force across the body — never discussed. The result is a training culture that loads dysfunction, programs intensity on a foundation of compromise, and then wonders why people plateau, get hurt, and quit.
+        </p>
+        <p>
+          The Monger Method was built to fix the sequence. Not to replace intensity — intensity has its place, and it's earned — but to ensure that when intensity arrives, the body is ready to receive it.
+        </p>
+        <p>
+          Seven sections. One order. Build a body you can trust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUES ─────────────────────────────────────────── -->
+  <section class="values">
+    <div class="container">
+      <div class="fade-in">
+        <span class="eyebrow">What This Is Built On</span>
+        <h2>How I Think About Training</h2>
+      </div>
+      <div class="values__grid fade-in">
+        <div class="value-box">
+          <div class="value-box__num">01</div>
+          <h4>Honesty Over Hype</h4>
+          <p>There is no hack. There is no shortcut. There is a logical sequence, and either you follow it or you don't. The Monger Method is built on the former — and it does not pretend otherwise.</p>
+        </div>
+        <div class="value-box">
+          <div class="value-box__num">02</div>
+          <h4>Education, Not Instruction</h4>
+          <p>The goal is not compliance. The goal is understanding. A client who understands why the sequence exists will follow it more reliably than one who is simply told to.</p>
+        </div>
+        <div class="value-box">
+          <div class="value-box__num">03</div>
+          <h4>The Body Is Integrated</h4>
+          <p>Isolated muscle training has its place. But a body that moves — in sport, in life, under load — moves as a unit. Training must reflect that reality.</p>
+        </div>
+        <div class="value-box">
+          <div class="value-box__num">04</div>
+          <h4>Quality Before Quantity</h4>
+          <p>AMQR. As Many Quality Reps. One session that teaches your nervous system something is worth more than ten that only exhaust it. Volume is a tool, not a goal.</p>
+        </div>
+        <div class="value-box">
+          <div class="value-box__num">05</div>
+          <h4>Compassion With Standards</h4>
+          <p>The clients who benefit most from this system are the ones who have been failed by other approaches. That demands patience. It does not demand lower standards.</p>
+        </div>
+        <div class="value-box">
+          <div class="value-box__num">06</div>
+          <h4>Strength Is a Reward</h4>
+          <p>You don't start with load. You earn load by building a system that is capable of using it safely and effectively. That framing changes everything about how training feels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT CTA ───────────────────────────────────────── -->
+  <section class="about-cta">
+    <div class="container fade-in">
+      <span class="eyebrow">Next Step</span>
+      <h2>Understand the System.<br>Then Start It.</h2>
+      <p>The method page gives you the full framework — all seven sections, the progression logic, and what you're actually building. Then, when you'ready, pick your entry point in the programs section.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="method.html" class="btn btn-primary">Read the Method →</a>
+        <a href="programs.html" class="btn btn-outline">Browse Programs →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo" style="margin-bottom:0.75rem;display:inline-flex;">
+            <div class="nav__logo-mark">MM</div>
+            Monger Method
+          </a>
+          <p>A movement education system for people who want to build a body they can trust — for life.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="method.html">The Method</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html#coaching">Work With Me</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="mailto:hello@mongermethod.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Monger Method. All rights reserved.</span>
+        <span>mongermethod.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
