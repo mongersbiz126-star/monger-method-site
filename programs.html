@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs — Monger Method</title>
+  <meta name="description" content="Monger Method programs: from the free 30-Day Reset to the full Bands Performance system and 1-on-1 coaching. Find your entry point." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-hero {
+      padding: 9rem 0 5rem;
+      background: var(--black);
+      position: relative;
+      border-bottom: 1px solid var(--charcoal-2);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--orange);
+    }
+    .page-hero__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      opacity: 0.65;
+      max-width: 540px;
+      margin-top: 1rem;
+    }
+
+    /* ── Program cards ────────────────────────────────────── */
+    .programs { padding: 6rem 0; background: var(--charcoal); }
+
+    .prog-card {
+      background: var(--black);
+      border: 1px solid var(--charcoal-2);
+      display: grid;
+      grid-template-columns: 1fr 1.8fr auto;
+      gap: 2.5rem;
+      padding: 2.5rem;
+      align-items: start;
+      margin-bottom: 1px;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .prog-card:hover { border-color: var(--orange); }
+    .prog-card--featured { border-color: var(--orange); background: var(--charcoal); }
+
+    .prog-card__badge {
+      position: absolute;
+      top: -1px; left: 2.5rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: var(--black);
+      padding: 0.28rem 0.7rem;
+    }
+
+    .prog-card__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .prog-card__tier {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .prog-card__meta h3 { font-size: 1.25rem; }
+
+    .prog-card__price {
+      margin-top: 0.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .prog-card__price span {
+      font-size: 0.85rem;
+      opacity: 0.45;
+      font-weight: 400;
+    }
+
+    .prog-card__details h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .prog-card__details p { font-size: 0.9rem; opacity: 0.65; line-height: 1.7; margin-bottom: 1rem; }
+
+    .prog-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .prog-includes li {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .prog-includes li::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .prog-card__cta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-end;
+      padding-top: 0.25rem;
+      min-width: 140px;
+    }
+
+    /* ── Free / entry strip ───────────────────────────────── */
+    .free-strip {
+      padding: 4rem 0;
+      background: var(--black);
+      border-top: 1px solid var(--charcoal-2);
+      border-bottom: 1px solid var(--charcoal-2);
+    }
+
+    .free-strip__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .free-strip h3 { margin-bottom: 0.4rem; }
+    .free-strip p  { opacity: 0.6; font-size: 0.95rem; margin: 0; }
+
+    /* ── Coaching section ─────────────────────────────────── */
+    .coaching {
+      padding: 6rem 0;
+      background: var(--black);
+      scroll-margin-top: 64px;
+    }
+
+    .coaching__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .coaching__left p { opacity: 0.7; line-height: 1.8; margin-bottom: 1rem; }
+
+    .coaching__tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .tier-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--charcoal);
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tier-row:hover { border-color: var(--orange); }
+    .tier-row--active { border-color: var(--orange); background: rgba(200,114,42,0.06); }
+
+    .tier-row__info h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .tier-row__info p  { font-size: 0.82rem; opacity: 0.5; margin: 0; }
+
+    .tier-row__price {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .tier-row__price strong {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .tier-row__price span {
+      font-size: 0.72rem;
+      opacity: 0.4;
+    }
+
+    .coaching__apply {
+      margin-top: 2rem;
+    }
+
+    .coaching__apply .form-input {
+      margin-bottom: 0.75rem;
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* ── Ladder diagram ───────────────────────────────────── */
+    .ladder { padding: 5rem 0; background: var(--charcoal); }
+
+    .ladder__diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-width: 680px;
+      margin: 2.5rem auto 0;
+    }
+
+    .rung {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem 1.75rem;
+      background: var(--black);
+      border-left: 3px solid var(--charcoal-2);
+      transition: border-color 0.2s;
+    }
+    .rung:hover { border-color: var(--orange); }
+    .rung--top { border-color: var(--orange); }
+
+    .rung__price {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--orange);
+      min-width: 72px;
+    }
+
+    .rung__label { font-size: 0.9rem; font-weight: 600; }
+    .rung__desc  { font-size: 0.78rem; opacity: 0.45; margin-left: auto; text-align: right; }
+
+    @media (max-width: 860px) {
+      .prog-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .prog-card__cta { align-items: flex-start; }
+      .coaching__grid { grid-template-columns: 1fr; gap: 3rem; }
+      .free-strip__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .rung__desc { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">MM</div>
+        Monger Method
+      </a>
+      <ul class="nav__links">
+        <li><a href="method.html">The Method</a></li>
+        <li><a href="programs.html" class="active">Programs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html#coaching" class="nav__cta">Work With Me</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ──────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="page-hero__inner fade-in">
+      <span class="eyebrow">Programs &amp; Coaching</span>
+      <h1>Pick Your<br>Entry Point</h1>
+      <p>Every program is built on the same framework. The right starting point depends on where you are in the system right now — not where you want to be.</p>
+    </div>
+  </section>
+
+  <!-- ── OFFER LADDER DIAGRAM ───────────────────────────── -->
+  <section class="ladder">
+    <div class="container fade-in">
+      <span class="eyebrow">The Offer Ladder</span>
+      <h2 style="text-align:center;">Start Free. Go As Deep As You Want.</h2>
+      <div class="ladder__diagram">
+        <div class="rung rung--top">
+          <span class="rung__price">$400–700/mo</span>
+          <span class="rung__label">1-on-1 Coaching</span>
+          <span class="rung__desc">Fully custom, direct access</span>
+        </div>
+        <div class="rung">
+          <span class="rung__price">$97</span>
+          <span class="rung__label">Full System Bundle</span>
+          <span class="rung__desc">All programs + guides</span>
+        </div>
+        <div class="rung">
+          <span class="rung__price">$49</span>
+          <span class="rung__label">Bands Performance Program</span>
+          <span class="rung__desc">52-week full system</span>
+        </div>
+        <div class="rung">
+          <span class="rung__price">$29</span>
+          <span class="rung__label">Bodyweight Foundations</span>
+          <span class="rung__desc">6-week entry program</span>
+        </div>
+        <div class="rung">
+          <span class="rung__price">Free</span>
+          <span class="rung__label">30-Day Reset</span>
+          <span class="rung__desc">The starting line</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FREE STRIP ─────────────────────────────────────── -->
+  <section class="free-strip">
+    <div class="free-strip__inner fade-in">
+      <div>
+        <span class="eyebrow">Free — Start Here</span>
+        <h3>The 30-Day Reset</h3>
+        <p>Breathing resets, foundational movement primers, and daily mobility work. Zero equipment. Any fitness level. The entry point to the entire system — and it's completely free.</p>
+      </div>
+      <div>
+        <form class="email-form" style="max-width:360px;flex-direction:column;gap:0.5rem;">
+          <input type="email" class="form-input" placeholder="Your email address" />
+          <button type="submit" class="btn btn-primary">Get the Free Reset</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROGRAMS ───────────────────────────────────────── -->
+  <section class="programs">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom:3rem;">
+        <span class="eyebrow">Digital Programs</span>
+        <h2>Built to Be Done,<br>Not Just Downloaded</h2>
+      </div>
+
+      <div class="fade-in">
+        <!-- Bodyweight -->
+        <div class="prog-card">
+          <div class="prog-card__meta">
+            <div class="prog-card__tier">Entry Level</div>
+            <h3>Bodyweight Foundations</h3>
+            <div class="prog-card__price">$29 <span>one-time</span></div>
+          </div>
+          <div class="prog-card__details">
+            <h4>What You're Getting</h4>
+            <p>Six weeks of structured movement work built entirely on your bodyweight. This is where foundational patterns are established — not as a beginner program, but as the deliberate first chapter of the system. If you've been training for years and your movement still breaks down under fatigue or load, start here.</p>
+            <ul class="prog-includes">
+              <li>6-week progressive program with full exercise descriptions</li>
+              <li>4 training sessions per week, 45–60 minutes each</li>
+              <li>Breathing and mobility primers included in every session</li>
+              <li>AMQR-based rep structure — quality over volume</li>
+              <li>Digital PDF, instant download</li>
+            </ul>
+          </div>
+          <div class="prog-card__cta">
+            <a href="#" class="btn btn-ghost" onclick="alert('Connect your Gumroad product link here');return false;">Buy Now →</a>
+            <a href="method.html" class="btn btn-outline" style="font-size:0.72rem;">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Bands -->
+        <div class="prog-card prog-card--featured">
+          <div class="prog-card__badge">Most Popular</div>
+          <div class="prog-card__meta">
+            <div class="prog-card__tier">Full System</div>
+            <h3>Bands Performance Program</h3>
+            <div class="prog-card__price">$49 <span>one-time</span></div>
+          </div>
+          <div class="prog-card__details">
+            <h4>What You're Getting</h4>
+            <p>Fifty-two weeks. Three levels. One system. Bodyweight Foundation → Band Only → Band Integrated. This is the most complete on-ramp to the Monger Method: a year of structured progressive training that moves you from base-level movement quality to genuine athletic capacity — without a single barbell or dumbbell required. Bands train the full velocity spectrum, demand stability through range, and travel anywhere.</p>
+            <ul class="prog-includes">
+              <li>52 weeks, 4 days/week — structured phase-by-phase</li>
+              <li>Level 1: Bodyweight Foundation (Weeks 1–16)</li>
+              <li>Level 2: Band Only (Weeks 17–36)</li>
+              <li>Level 3: Band Integrated (Weeks 37–52)</li>
+              <li>Exercise library with cues and progressions</li>
+              <li>Digital PDF, instant download</li>
+            </ul>
+          </div>
+          <div class="prog-card__cta">
+            <a href="#" class="btn btn-primary" onclick="alert('Connect your Gumroad product link here');return false;">Buy Now →</a>
+            <a href="method.html" class="btn btn-outline" style="font-size:0.72rem;">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Athlete Rebuild -->
+        <div class="prog-card">
+          <div class="prog-card__meta">
+            <div class="prog-card__tier">Athlete Specific</div>
+            <h3>Athlete Rebuild</h3>
+            <div class="prog-card__price">$49 <span>one-time</span></div>
+          </div>
+          <div class="prog-card__details">
+            <h4>What You're Getting</h4>
+            <p>A 6-week PAP contrast training program for former or current athletes who've lost their athletic edge. Built around post-activation potentiation — pairing strength work and plyometrics in the same session to reignite the neurological output that makes athletes different. Three phases: Accumulation, Intensification, Realization. Designed for the former college athlete, the adult recreational competitor, or anyone whose athletic capacity needs to be rebuilt from a sound base.</p>
+            <ul class="prog-includes">
+              <li>6 weeks, 3 phases — Accumulation / Intensification / Realization</li>
+              <li>PAP contrast pairs in every session</li>
+              <li>Plyometric and strength progressions detailed throughout</li>
+              <li>Mobility and breath warm-up included</li>
+              <li>Digital PDF, instant download</li>
+            </ul>
+          </div>
+          <div class="prog-card__cta">
+            <a href="#" class="btn btn-ghost" onclick="alert('Connect your Gumroad product link here');return false;">Buy Now →</a>
+            <a href="method.html#section04" class="btn btn-outline" style="font-size:0.72rem;">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Bundle -->
+        <div class="prog-card">
+          <div class="prog-card__meta">
+            <div class="prog-card__tier">Best Value</div>
+            <h3>Full System Bundle</h3>
+            <div class="prog-card__price">$97 <span>one-time</span></div>
+          </div>
+          <div class="prog-card__details">
+            <h4>What You're Getting</h4>
+            <p>Every program, guide, and resource in the Monger Method library. All three training programs, the section-by-section reference guides, the sling system integration protocols, the mobility and recovery templates, and any new materials added going forward. If you're committed to the full system, this is the most efficient entry.</p>
+            <ul class="prog-includes">
+              <li>Bodyweight Foundations (6 weeks)</li>
+              <li>Bands Performance Program (52 weeks)</li>
+              <li>Athlete Rebuild (6 weeks)</li>
+              <li>All section guides, protocols, and reference materials</li>
+              <li>All future updates included</li>
+            </ul>
+          </div>
+          <div class="prog-card__cta">
+            <a href="#" class="btn btn-ghost" onclick="alert('Connect your Gumroad product link here');return false;">Get Bundle →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COACHING ────────────────────────────────────────── -->
+  <section class="coaching" id="coaching">
+    <div class="container">
+      <span class="eyebrow">Premium</span>
+      <h2>1-on-1 Coaching</h2>
+      <div class="coaching__grid fade-in">
+        <div class="coaching__left">
+          <p>This is not a check-in service. This is custom programming built around your movement, your movement history, your goals, and your life constraints — with direct access to the person who built the system.</p>
+          <p>Every coaching client gets a full movement assessment before a single rep is programmed. The program is built on what that assessment reveals — not on what you think you need, and not on a template with your name swapped in.</p>
+          <p>Applications are reviewed. Not everyone is a fit. If you're not ready to commit to the process, the digital programs are the right place to start. If you are, fill out the form below.</p>
+          <p style="color:var(--orange);font-weight:700;opacity:1;">Spots are limited. Current availability: 4 slots.</p>
+        </div>
+        <div>
+          <div class="coaching__tiers">
+            <div class="tier-row tier-row--active">
+              <div class="tier-row__info">
+                <h4>Standard Coaching</h4>
+                <p>Custom programming + weekly check-in</p>
+              </div>
+              <div class="tier-row__price">
+                <strong>$400</strong>
+                <span>/ month</span>
+              </div>
+            </div>
+            <div class="tier-row">
+              <div class="tier-row__info">
+                <h4>Elite Coaching</h4>
+                <p>Custom programming + 2x weekly check-ins + direct messaging</p>
+              </div>
+              <div class="tier-row__price">
+                <strong>$700</strong>
+                <span>/ month</span>
+              </div>
+            </div>
+          </div>
+          <div class="coaching__apply mt-4">
+            <h4 style="font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1.25rem;">Apply for Coaching</h4>
+            <form onsubmit="handleCoachingApply(event)">
+              <div class="form-group">
+                <input type="text" class="form-input" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-input" placeholder="Your email" required />
+              </div>
+              <div class="form-group">
+                <textarea class="form-input" placeholder="Tell me where you are in your training and what you're working toward." rows="4"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Submit Application →</button>
+            </form>
+          </div>
+      2 </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo" style="margin-bottom:0.75rem;display:inline-flex;">
+            <div class="nav__logo-mark">MM</div>
+            Monger Method
+          </a>
+          <p>A movement education system for people who want to build a body they can trust — for life.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="method.html">The Method</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html#coaching">Work With Me</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="mailto:hello@mongermethod.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Monger Method. All rights reserved.</span>
+        <span>mongermethod.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleCoachingApply(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Application Received.';
+      btn.disabled = true;
+      btn.style.background = 'var(--charcoal)';
+      btn.style.borderColor = 'var(--charcoal)';
+      btn.style.color = 'var(--orange)';
+      const msg = document.createElement('p');
+      msg.textContent = "I'll be in touch within 48 hours.";
+      msg.style.cssText = 'color:var(--orange);font-size:0.85rem;margin-top:0.75rem;font-weight:600;';
+      e.target.after(msg);
+    }
+  </script>
+</body>
+</html>
