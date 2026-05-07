@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Monger Method — Build a Body You Can Trust</title>
+  <meta name="description" content="A systematic movement education system built on breath, control, and progressive structure. Not a workout program — a methodology for building a body that performs for life." />
+  <meta property="og:title" content="The Monger Method" />
+  <meta property="og:description" content="Build a Body You Can Trust." />
+  <meta property="og:url" content="https://mongermethod.com" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--orange);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 42%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--charcoal) 0%, #111 100%);
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+      z-index: 0;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero__left { max-width: 520px; }
+
+    .hero__headline {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero__sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.75;
+      margin-bottom: 2.5rem;
+      max-width: 440px;
+    }
+
+    .hero__cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero__opt-in-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero__social-proof {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--charcoal-2);
+    }
+
+    .hero__social-proof span {
+      font-size: 0.78rem;
+      opacity: 0.5;
+      letter-spacing: 0.04em;
+    }
+
+    .hero__right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .hero__step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.4rem 1.6rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--charcoal-2);
+      transition: all 0.2s;
+    }
+    .hero__step:hover {
+      border-color: var(--orange);
+      background: rgba(200, 114, 42, 0.05);
+    }
+    .hero__step:hover .hero__step-num { color: var(--amber); }
+
+    .hero__step-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      min-width: 32px;
+      padding-top: 3px;
+    }
+
+    .hero__step-body h4 {
+      font-size: 0.95rem;
+      color: var(--cream);
+      margin-bottom: 0.2rem;
+    }
+    .hero__step-body p {
+      font-size: 0.82rem;
+      opacity: 0.55;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Truth section ────────────────────────────────────── */
+    .truth {
+      padding: 6rem 0;
+      background: var(--charcoal);
+    }
+
+    .truth__inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .truth__quote {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--cream);
+      margin: 1.5rem 0;
+    }
+
+    .truth__quote em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .truth__body {
+      font-size: 1.05rem;
+      opacity: 0.7;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ── Method preview ───────────────────────────────────── */
+    .method-preview { padding: 6rem 0; background: var(--black); }
+
+    .method-preview__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .progression-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 3rem 0 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .prog-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .prog-step__label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.4;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--charcoal-2);
+      background: transparent;
+      transition: all 0.2s;
+    }
+
+    .prog-step__label.active {
+      color: var(--black);
+      background: var(--orange);
+      border-color: var(--orange);
+      opacity: 1;
+    }
+
+    .prog-arrow {
+      font-size: 0.7rem;
+      color: var(--orange);
+      padding: 0 0.25rem;
+      opacity: 0.5;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--charcoal-2);
+      border: 1px solid var(--charcoal-2);
+    }
+
+    .method-card {
+      background: var(--black);
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    .method-card:hover { background: var(--charcoal); }
+    .method-card:hover .method-card__num { color: var(--amber); }
+
+    .method-card__num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+
+    .method-card h4 {
+      font-size: 0.9rem;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .method-card p {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .method-card__bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--orange);
+      transition: width 0.35s ease;
+    }
+    .method-card:hover .method-card__bar { width: 100%; }
+
+    /* ── Offer ladder ─────────────────────────────────────── */
+    .offers { padding: 6rem 0; background: var(--charcoal); }
+
+    .offer-card {
+      background: var(--black);
+      border: 1px solid var(--charcoal-2);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .offer-card:hover { border-color: var(--orange); }
+
+    .offer-card--featured {
+      border-color: var(--orange);
+      background: var(--charcoal);
+    }
+
+    .offer-badge {
+      position: absolute;
+      top: -1px; right: 1.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: var(--black);
+      padding: 0.3rem 0.75rem;
+    }
+
+    .offer-card__tier {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .offer-card h3 {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .offer-card__price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .offer-card__price span {
+      font-size: 0.85rem;
+      opacity: 0.5;
+      font-weight: 400;
+    }
+
+    .offer-card p {
+      font-size: 0.875rem;
+      opacity: 0.65;
+      margin: 0;
+    }
+
+    /* ── Lead magnet strip ────────────────────────────────── */
+    .lead-strip {
+      background: var(--orange);
+      padding: 4.5rem 0;
+    }
+
+    .lead-strip__inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .lead-strip h2 { color: var(--black); }
+    .lead-strip p  { color: var(--black); opacity: 0.75; font-size: 1rem; }
+
+    .lead-strip .email-form { margin: 1.75rem auto 0; }
+
+    .lead-strip .form-input {
+      background: rgba(0,0,0,0.15);
+      border-color: rgba(0,0,0,0.2);
+      color: var(--black);
+    }
+    .lead-strip .form-input::placeholder { color: rgba(0,0,0,0.45); }
+    .lead-strip .form-input:focus { border-color: var(--black); }
+
+    .lead-strip .btn-primary {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--cream);
+    }
+    .lead-strip .btn-primary:hover {
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+    }
+
+    /* ── Testimonials ─────────────────────────────────────── */
+    .testimonials { padding: 6rem 0; background: var(--black); }
+
+    .testimonial-card {
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-2);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 1rem; left: 1.5rem;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--orange);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      opacity: 0.75;
+      padding-top: 1.25rem;
+    }
+
+    .testimonial-card__author {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--charcoal-2);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    /* ── Hero responsive ──────────────────────────────────── */
+    @media (max-width: 860px) {
+      .hero__content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+      .hero::after { display: none; }
+      .method-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .method-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">MM</div>
+        Monger Method
+      </a>
+      <ul class="nav__links">
+        <li><a href="method.html">The Method</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html#coaching" class="nav__cta">Work With Me</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__content">
+      <div class="hero__left fade-in">
+        <span class="eyebrow">The Monger Method</span>
+        <h1 class="hero__headline">
+          Build a Body<br>You Can <em>Trust</em>
+        </h1>
+        <p class="hero__sub">
+          Motivation gets you started. Structure keeps you moving.
+          The Monger Method is a systematic movement education system — built from breath up — that turns your body into something reliable, capable, and yours.
+        </p>
+        <div class="hero__cta-group">
+          <div>
+            <p class="hero__opt-in-label">Free Guide — Start Here</p>
+            <form class="email-form">
+              <input type="email" class="form-input" placeholder="Your email address" />
+              <button type="submit" class="btn btn-primary">Get Free guide</button>
+            </form>
+          </div>
+          <a href="programs.html" class="btn btn-outline" style="width:fit-content;">Browse Programs</a>
+        </div>
+        <div class="hero__social-proof">
+          <span>Movement education · Not another workout plan</span>
+        </div>
+      </div>
+
+      <div class="hero__right fade-in">
+        <div class="hero__step">
+          <span class="hero__step-num">01</span>
+          <div class="hero__step-body">
+            <h4>Breathe First</h4>
+            <p>Every rep, every movement, every performance outcome begins with breath control. It is not a warm-up — it is the foundation.</p>
+          </div>
+        </div>
+        <div class="hero__step">
+          <span class="hero__step-num">02</span>
+          <div class="hero__step-body">
+            <h4>Move Well</h4>
+            <p>Foundational patterns before load. Hinge, squat, push, pull — owned at the joint level before any weight touches the bar.</p>
+          </div>
+        </div>
+        <div class="hero__step">
+          <span class="hero__step-num">03</span>
+          <div class="hero__step-body">
+            <h4>Control Your Body</h4>
+            <p>Mobility and stability are not accessories. They are the prerequisites for everything that comes next.</p>
+          </div>
+        </div>
+        <div class="hero__step">
+          <span class="hero__step-num">04</span>
+          <div class="hero__step-body">
+            <h4>Earn the Load</h4>
+            <p>Strength and performance are rewards for doing the earlier work correctly. Skip the foundation, cap your ceiling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUTH SECTION ──────────────────────────────────── -->
+  <section class="truth">
+    <div class="truth__inner fade-in">
+      <span class="eyebrow">A Sobering Truth</span>
+      <p class="truth__quote">
+        "Most training programs are built for people who are <em>already working</em> — not for the ones who need to rebuild from the inside out."
+      </p>
+      <p class="truth__body">
+        The fitness industry sells intensity. It sells aesthetics. It rarely sells the thing that actually determines your long-term performance: a body that has been taught to breathe, move, stabilize, and load in the right sequence.
+        That sequencing is the Monger Method.
+      </p>
+      <a href="method.html" class="btn btn-ghost">See the Full Framework →</a>
+    </div>
+  </section>
+
+  <!-- ── METHOD PREVIEW ─────────────────────────────────── -->
+  <section class="method-preview">
+    <div class="container">
+      <div class="method-preview__header fade-in">
+        <div>
+          <span class="eyebrow">The Framework</span>
+          <h2>7 Sections. One System.</h2>
+        </div>
+        <a href="method.html" class="btn btn-ghost">Full Breakdown →</a>
+      </div>
+
+      <div class="progression-bar fade-in">
+        <div class="prog-step">
+          <span class="prog-step__label active">Breath</span>
+        </div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">
+          <span class="prog-step__label active">Move</span>
+        </div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">
+          <span class="prog-step__label active">Control</span>
+        </div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">
+          <span class="prog-step__label active">Explode</span>
+        </div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">
+          <span class="prog-step__label active">Load</span>
+        </div>
+      </div>
+      <p class="text-muted mt-2 mb-4" style="font-size:0.78rem;letter-spacing:0.06em;">This is the order. There are no shortcuts.</p>
+
+      <div class="method-grid fade-in">
+        <div class="method-card">
+          <div class="method-card__num">Section 01</div>
+          <h4>Breathing &amp; Breath Control</h4>
+          <p>Intra-abdominal pressure, diaphragmatic mechanics, and the nervous system reset that unlocks everything downstream.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 02</div>
+          <h4>Foundational Movements</h4>
+          <p>The six human movement patterns — learned, owned, and internalized before any progressive overload is applied.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 03</div>
+          <h4>Mobility &amp; Stability</h4>
+          <p>Joint-by-joint assessment and targeted work so the system moves freely and holds position under demand.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 3.5</div>
+          <h4>Sling System Integration</h4>
+          <p>Posterior and anterior oblique slings — the myofascial chains that connect the body as a rotational unit.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 04</div>
+          <h4>Athletics</h4>
+          <p>Speed, agility, power expression, and sport-specific coordination — built on the controlled base you've earned.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 05</div>
+          <h4>Strength</h4>
+          <p>Triphasic loading — eccentric, isometric, concentric — applied systematically to compound and loaded patterns.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 06</div>
+          <h4>Energy Systems</h4>
+          <p>Conditioning that serves your goals — aerobic base, lactate threshold, and alactic power developed in sequence.</p>
+          <div class="method-card__bar"></div>
+        </div>
+        <div class="method-card">
+          <div class="method-card__num">Section 07</div>
+          <h4>Recovery &amp; Regeneration</h4>
+          <p>Sleep, tissue quality, parasympathetic restoration — the work that makes all the other work compound over time.</p>
+          <div class="method-card__bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LEAD MAGNET STRIP ───────────────────────────────── -->
+  <section class="lead-strip">
+    <div class="lead-strip__inner fade-in">
+      <span class="eyebrow" style="color:rgba(0,0,0,0.5);">Free Download</span>
+      <h2>The 30-Day Reset</h2>
+      <p>
+        Breathing resets. Foundational movement primers. Daily mobility work.
+        The entry point to the entire system — zero equipment, any fitness level.
+      </p>
+      <form class="email-form">
+        <input type="email" class="form-input" placeholder="Enter your email" />
+        <button type="submit" class="btn btn-primary">Send My Copy</button>
+      </form>
+      <p style="font-size:0.72rem;opacity:0.45;margin-top:0.75rem;color:#0D0D0D;">No spam. Unsubscribe any time.</p>
+    </div>
+  </section>
+
+  <!-- ── OFFERS ──────────────────────────────────────────── -->
+  <section class="offers">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom:3rem;">
+        <span class="eyebrow">Programs</span>
+        <h2>Where Do You Start?</h2>
+        <p style="max-width:500px;opacity:0.65;margin-top:0.5rem;">Every program is built on the same framework. The question is where you are in the system right now.</p>
+      </div>
+
+      <div class="grid-3 fade-in">
+        <div class="offer-card">
+          <div class="offer-card__tier">Entry Point</div>
+          <h3>Bodyweight Foundations</h3>
+          <div class="offer-card__price">$29 <span>one-time</span></div>
+          <p>6 weeks. No equipment. Master the foundational movement patterns before you ever touch a weight.</p>
+          <a href="programs.html" class="btn btn-ghost" style="margin-top:auto;">View Program →</a>
+        </div>
+        <div class="offer-card offer-card--featured">
+          <div class="offer-badge">Most Popular</div>
+          <div class="offer-card__tier">Full System</div>
+          <h3>Bands Performance Program</h3>
+          <div class="offer-card__price">$49 <span>one-time</span></div>
+          <p>52 weeks. Bodyweight → Bands → Full integration. The complete on-ramp to the Monger Method system.</p>
+          <a href="programs.html" class="btn btn-primary" style="margin-top:auto;">Get Started →</a>
+        </div>
+        <div class="offer-card">
+          <div class="offer-card__tier">Premium</div>
+          <h3>1-on-1 Coaching</h3>
+          <div class="offer-card__price">$400 <span>/ month</span></div>
+          <p>Custom programming, weekly check-ins, direct access. Built around your movement, your goals, your life.</p>
+          <a href="programs.html#coaching" class="btn btn-ghost" style="margin-top:auto;">Apply Now →</a>
+        </div>
+      </div>
+
+      <p class="text-center mt-4" style="opacity:0.45;font-size:0.82rem;">
+        Not sure where to start? <a href="method.html" style="color:var(--orange);opacity:1;">Read the method breakdown first →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ────────────────────────────────────── -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom:3rem;">
+        <span class="eyebrow">What People Say</span>
+        <h2>Built Different</h2>
+      </div>
+      <div class="grid-3 fade-in">
+        <div class="testimonial-card">
+          <p>"I've lifted for 12 years and never understood why I kept getting hurt. Two months into the Monger Method and I finally understand what was missing. It wasn't strength — it was everything that comes before strength."</p>
+          <div class="testimonial-card__author">D.W. — Former College Athlete</div>
+        </div>
+        <div class="testimonial-card">
+          <p>"The breathing work alone changed how I train. I thought it was going to be basic. It was not basic. My core engagement in every lift is completely different now."</p>
+          <div class="testimonial-card__author">M.T. — Recreational Lifter</div>
+        </div>
+        <div class="testimonial-card">
+          <p>"After my ACL, every program felt like it was rebuilding a car without checking the engine first. The Monger Method checked the engine first. That's the difference."</p>
+          <div class="testimonial-card__author">J.R. — Post-Injury Comeback</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo" style="margin-bottom:0.75rem;display:inline-flex;">
+            <div class="nav__logo-mark">MM</div>
+            Monger Method
+          </a>
+          <p>A movement education system for people who want to build a body they can trust — for life.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="method.html">The Method</a></li>
+          <li><a href="programs.html">Programs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html#coaching">Work With Me</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="mailto:hello@mongermethod.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Monger Method. All rights reserved.</span>
+        <span>mongermethod.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+>
