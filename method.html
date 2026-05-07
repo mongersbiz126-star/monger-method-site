@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Method — Monger Method</title>
+  <meta name="description" content="The Monger Method: a 7-section movement education system built on the progression Breath → Move → Control → Explode → Load. Strength is a reward for doing the work correctly." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Page Hero ────────────────────────────────────────── */
+    .page-hero {
+      padding: 9rem 0 5rem;
+      background: var(--black);
+      position: relative;
+      border-bottom: 1px solid var(--charcoal-2);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--orange);
+    }
+
+    .page-hero__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: end;
+    }
+
+    .page-hero__kicker {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      max-width: 480px;
+    }
+
+    .page-hero__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--charcoal-2);
+      border: 1px solid var(--charcoal-2);
+      align-self: end;
+    }
+
+    .stat-box {
+      background: var(--charcoal);
+      padding: 1.5rem;
+    }
+
+    .stat-box__num {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .stat-box__label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Philosophy ───────────────────────────────────────── */
+    .philosophy { padding: 6rem 0; background: var(--charcoal); }
+
+    .philosophy__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .philosophy__text p { opacity: 0.75; font-size: 1rem; line-height: 1.8; }
+
+    .philosophy__principles {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .principle {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--black);
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .principle:hover {
+      border-color: var(--orange);
+      background: rgba(200,114,42,0.04);
+    }
+
+    .principle__icon {
+      width: 36px;
+      height: 36px;
+      background: var(--charcoal-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+    }
+
+    .principle h4 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .principle p  { font-size: 0.82rem; opacity: 0.55; margin: 0; }
+
+    /* ── Progression spine ────────────────────────────────── */
+    .progression { padding: 6rem 0; background: var(--black); }
+
+    .prog-spine {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .prog-spine::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--orange) 0%, rgba(200,114,42,0.1) 100%);
+    }
+
+    .prog-node {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 0 0 2.5rem 0;
+      position: relative;
+    }
+
+    .prog-node__dot {
+      width: 58px;
+      height: 58px;
+      background: var(--charcoal);
+      border: 2px solid var(--charcoal-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      position: relative;
+      z-index: 1;
+      transition: all 0.2s;
+    }
+
+    .prog-node:hover .prog-node__dot {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .prog-node__body { padding-top: 0.75rem; }
+    .prog-node__body h3 { margin-bottom: 0.4rem; }
+    .prog-node__body p  { font-size: 0.9rem; opacity: 0.65; max-width: 620px; }
+
+    .prog-node__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.6rem;
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-2);
+      color: var(--cream);
+      opacity: 0.6;
+    }
+
+    /* ── Sections deep dive ───────────────────────────────── */
+    .sections-deep { padding: 6rem 0; background: var(--charcoal); }
+
+    .section-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--charcoal-2);
+      align-items: start;
+    }
+    .section-item:last-child { border-bottom: none; }
+
+    .section-item__num {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--orange);
+      opacity: 0.18;
+      line-height: 1;
+      text-align: right;
+      padding-top: 0.2rem;
+    }
+
+    .section-item__content h3 { margin-bottom: 0.5rem; }
+    .section-item__content p  { opacity: 0.65; line-height: 1.8; margin-bottom: 1rem; }
+
+    .section-item__deliverables {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .deliverable-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      opacity: 0.7;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────── */
+    .method-cta {
+      padding: 6rem 0;
+      background: var(--black);
+      text-align: center;
+    }
+    .method-cta p { max-width: 520px; margin: 1rem auto 2rem; opacity: 0.65; }
+
+    @media (max-width: 860px) {
+      .page-hero__inner { grid-template-columns: 1fr; gap: 3rem; }
+      .philosophy__grid { grid-template-columns: 1fr; gap: 3rem; }
+      .section-item { grid-template-columns: 60px 1fr; gap: 1.5rem; }
+      .section-item__num { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">MM</div>
+        Monger Method
+      </a>
+      <ul class="nav__links">
+        <li><a href="method.html" class="active">The Method</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="programs.html#coaching" class="nav__cta">Work With Me</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HERO ──────────────────────────────────────── -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="fade-in">
+        <p class="page-hero__kicker">The Framework</p>
+        <h1>The Monger<br>Method</h1>
+        <p>Seven sections. One logical progression. Built on the understanding that your body is an integrated system — and it has to be trained that way.</p>
+        <div class="mt-4">
+          <a href="programs.html" class="btn btn-primary">Start the System →</a>
+        </div>
+      </div>
+      <div class="page-hero__stats fade-in">
+        <div class="stat-box">
+          <div class="stat-box__num">7</div>
+          <div class="stat-box__label">System Sections</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__num">1</div>
+          <div class="stat-box__label">Non-Negotiable Order</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__num">5</div>
+          <div class="stat-box__label">Core Phases</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box__num">∞</div>
+          <div class="stat-box__label">Applications</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHILOSOPHY ─────────────────────────────────────── -->
+  <section class="philosophy">
+    <div class="container">
+      <div class="philosophy__grid">
+        <div class="philosophy__text fade-in">
+          <span class="eyebrow">The Philosophy</span>
+          <h2>Motivation Is Not a System</h2>
+          <p>Every high-performing person eventually learns that wanting it badly enough only carries you so far. What separates the ones who get there from the ones who don't is structural: a method that compounds over time because it's built on a logical sequence.</p>
+          <p>The Monger Method was developed out of a simple observation: most people in the gym are training the end result, not the prerequisites. They're loading a system that hasn't been prepared to receive load. They're programming intensity on a foundation of dysfunction.</p>
+          <p>The result is the same every time: plateaus, chronic injuries, frustration, and the belief that their body just "isn't built for this." That belief is false. The sequence was wrong.</p>
+          <p style="color:var(--orange);font-weight:700;opacity:1;">The Monger Method fixes the sequence.</p>
+        </div>
+        <div class="philosophy__principles fade-in">
+          <div class="principle">
+            <div class="principle__icon">01</div>
+            <div>
+              <h4>Sequence Over Intensity</h4>
+              <p>The order in which you train matters more than how hard you train. Hard work on the wrong foundation compounds dysfunction.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle__icon">02</div>
+            <div>
+              <h4>Mastery Before Variety</h4>
+              <p>The same movement patterns appear across all phases — not because the training is limited, but because mastery is the goal. Novelty is not progress.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle__icon">03</div>
+            <div>
+              <h4>Strength Is a Reward</h4>
+              <p>You don't earn a stronger body by lifting heavier. You earn it by building the conditions under which strength can safely express itself.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle__icon">04</div>
+            <div>
+              <h4>Quality Over Quantity</h4>
+              <p>AMQR — As Many Quality Reps — not AMRAP. The session that teaches your body something is worth more than the session that exhausts it.</p>
+            </div>
+          </div>
+          <div class="principle">
+            <div class="principle__icon">05</div>
+            <div>
+              <h4>The Body Is Integrated</h4>
+              <p>Myofascial slings, spinal engine mechanics, triphasic loading — the body moves as one unit. Train it that way.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROGRESSION SPINE ──────────────────────────────── -->
+  <section class="progression">
+    <div class="container">
+      <div class="fade-in" style="max-width:560px;">
+        <span class="eyebrow">The Progression</span>
+        <h2>Breath → Move → Control → Explode → Load</h2>
+        <p style="opacity:0.65;">These five phases are not arbitrary. They reflect the hierarchy of human movement — what must exist before the next layer can be safely added.</p>
+      </div>
+      <div class="prog-spine fade-in">
+        <div class="prog-node">
+          <div class="prog-node__dot">01</div>
+          <div class="prog-node__body">
+            <h3>Breathe</h3>
+            <p>Diaphragmatic mechanics, intra-abdominal pressure management, and nervous system regulation. Breath is the first input. It controls spinal stiffness, core stability, and the physiological state your training happens in. Skip it and every rep above it is structurally compromised.</p>
+            <div class="prog-node__tags">
+              <span class="tag">IAP</span>
+              <span class="tag">Diaphragm</span>
+              <span class="tag">NS Regulation</span>
+              <span class="tag">Bracing</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-node">
+          <div class="prog-node__dot">02</div>
+          <div class="prog-node__body">
+            <h3>Move</h3>
+            <p>The six foundational movement patterns — hinge, squat, push, pull, carry, rotate — trained to the point of internalization. Not memorized. Not occasionally correct. Automatic under fatigue, load, and speed. This is the vocabulary of the body.</p>
+            <div class="prog-node__tags">
+              <span class="tag">Hinge</span>
+              <span class="tag">Squat</span>
+              <span class="tag">Push/Pull</span>
+              <span class="tag">Rotation</span>
+              <span class="tag">Carry</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-node">
+          <div class="prog-node__dot">03</div>
+          <div class="prog-node__body">
+            <h3>Control</h3>
+            <p>Mobility without stability is just flexibility. Stability without mobility is just rigidity. This phase develops both — joint-by-joint, sling-by-sling — so the body can move freely and hold position under demand. The sling system integration (Section 3.5) lives here: training the posterior and anterior oblique slings as the rotational connective tissue of the whole organism.</p>
+            <div class="prog-node__tags">
+              <span class="tag">Mobility</span>
+              <span class="tag">Stability</span>
+              <span class="tag">Sling System</span>
+              <span class="tag">Thoracolumbar Fascia</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-node">
+          <div class="prog-node__dot">04</div>
+          <div class="prog-node__body">
+            <h3>Explode</h3>
+            <p>Athletic expression — speed, power, agility, reactive strength. Now that the system moves well and controls itself, it can be asked to express force rapidly. This is where sport-specific qualities are developed. Landmine training enters here: the transverse plane emphasis and rotational skill development bridge the sling system into athletic output.</p>
+            <div class="prog-node__tags">
+              <span class="tag">Power</span>
+              <span class="tag">Speed</span>
+              <span class="tag">Agility</span>
+              <span class="tag">Landmine</span>
+              <span class="tag">PAP Training</span>
+            </div>
+          </div>
+        </div>
+        <div class="prog-node">
+          <div class="prog-node__dot">05</div>
+          <div class="prog-node__body">
+            <h3>Load</h3>
+            <p>Triphasic strength development — eccentric, isometric, concentric phases trained in dedicated blocks. This is where progressive overload is systematically applied to a body that is finally prepared to receive it. Most programs start here. The Monger Method earns it.</p>
+            <div class="prog-node__tags">
+              <span class="tag">Triphasic</span>
+              <span class="tag">Eccentric Phase</span>
+              <span class="tag">Isometric Phase</span>
+              <span class="tag">Concentric Phase</span>
+              <span class="tag">Progressive Overload</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTIONS DEEP DIVE ─────────────────────────────── -->
+  <section class="sections-deep">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom:1rem;">
+        <span class="eyebrow">Section by Section</span>
+        <h2>What You're Actually Building</h2>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">01</div>
+        <div class="section-item__content">
+          <h3>Breathing &amp; Breath Control</h3>
+          <p>The foundation beneath every other section. Diaphragmatic breathing, rib cage positioning, intra-abdominal pressure mechanics, and the relationship between breath and spinal stability. Most lifters have never been taught how to breathe for performance. This section changes that permanently.</p>
+          <p>Key concepts: Zone of apposition, 360-degree expansion, Valsalva mechanics, nervous system mode (sympathetic vs. parasympathetic), breath as a rep timing tool.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Exercise Library</span>
+            <span class="deliverable-tag">6-Week Phase Program</span>
+            <span class="deliverable-tag">Lead Magnet PDF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">02</div>
+        <div class="section-item__content">
+          <h3>Foundational Movements</h3>
+          <p>The six human movement patterns trained with intentionality and patience. Not as a checklist, but as a long-term skill development project. Each pattern is broken into its components, drilled under controlled conditions, and then integrated into compound expressions. Exercises remain consistent across phases — the variable is quality of execution, not exercise selection.</p>
+          <p>Key concepts: Hip hinge mechanics, knee-dominant vs. hip-dominant loading, overhead position, scapular control, anti-rotation, loaded carry variations.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Exercise Library</span>
+            <span class="deliverable-tag">Bodyweight Foundations Program</span>
+            <span class="deliverable-tag">Phased Progression</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">03</div>
+        <div class="section-item__content">
+          <h3>Mobility &amp; Stability</h3>
+          <p>Joint-by-joint assessment starting from the ankle and working up: mobility at the ankle, stability at the knee, mobility at the hip, stability at the lumbar spine, mobility at the thoracic spine, stability at the scapula, mobility at the glenohumeral joint. Each joint needs to function independently before the chain can express coordinated movement.</p>
+          <p>Key concepts: Joint-by-joint approach, tissue quality, active vs. passive range, motor control under end range, breathing mechanics in mobility work.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Mobility Protocols</span>
+            <span class="deliverable-tag">Stability Drills</span>
+            <span class="deliverable-tag">Daily Practice Templates</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">3.5</div>
+        <div class="section-item__content">
+          <h3>Sling System Integration</h3>
+          <p>The posterior oblique sling (latissimus dorsi + contralateral gluteus maximus via thoracolumbar fascia) and anterior oblique sling (external oblique + contralateral adductor via anterior abdominal fascia) are the myofascial highways that transmit rotational force across the body. Training these slings — not just the individual muscles — is the key to integrating the upper and lower halves of the body into a single athletic unit.</p>
+          <p>Key concepts: Gracovetsky spinal engine theory, thoracolumbar fascia mechanics, cross-body force transmission, rotational priming exercises.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Sling Activation Library</span>
+            <span class="deliverable-tag">Integration Protocols</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">04</div>
+        <div class="section-item__content">
+          <h3>Athletics</h3>
+          <p>Speed mechanics, change of direction, reactive agility, plyometric progressions, and sport-specific power expression. By the time a client reaches this section, the system that is being asked to perform athletically has been prepared to receive those demands. PAP (Post-Activation Potentiation) contrast training is introduced here — strength and plyometric work paired in the same session to exploit the heightened neurological state following maximal effort.</p>
+          <p>Key concepts: PAP contrast training, elastic energy, triple extension, deceleration mechanics, reactive strength index, speed-strength continuum.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Athlete Rebuild Program</span>
+            <span class="deliverable-tag">PAP Contrast Templates</span>
+            <span class="deliverable-tag">Plyometric Progression</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">05</div>
+        <div class="section-item__content">
+          <h3>Strength</h3>
+          <p>Triphasic training applied to compound movements. Three distinct periodization blocks: eccentric (tempo training, tissue remodeling, motor unit recruitment), isometric (force production at specific joint angles, sticking points, co-contraction), and concentric (rate of force development, peak power expression). This is not three separate programs — it is one system trained in sequence, reflecting how force is actually produced in athletic and functional movement.</p>
+          <p>Key concepts: Triphasic periodization (Cal Dietz), rate coding, motor unit recruitment, yield isometrics, overcoming isometrics, eccentric-concentric coupling.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Triphasic Program</span>
+            <span class="deliverable-tag">Strength Blocks</span>
+            <span class="deliverable-tag">Landmine Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">06</div>
+        <div class="section-item__content">
+          <h3>Energy Systems &amp; Conditioning</h3>
+          <p>Aerobic base development, lactate threshold training, alactic-anaerobic power — each developed in a logical order that supports rather than competes with the strength and athletic work happening in parallel. Conditioning is not cardio for the sake of cardio. It is the systematic development of the energy systems that power every training session and every life demand.</p>
+          <p>Key concepts: Aerobic base, cardiac output, alactic-anaerobic system, lactate threshold, work-rest ratios, energy system sequencing.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Conditioning Templates</span>
+            <span class="deliverable-tag">Energy System Guide</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-item fade-in">
+        <div class="section-item__num">07</div>
+        <div class="section-item__content">
+          <h3>Recovery &amp; Regeneration</h3>
+          <p>The section that determines whether all the other work compounds or decays. Sleep quality and quantity, tissue work (soft tissue, fascia), parasympathetic restoration protocols, nutrition timing, and long-term training age management. Recovery is not passive — it is a skill that is actively practiced and progressively improved.</p>
+          <p>Key concepts: Sleep architecture, HRV monitoring, autonomic nervous system balance, active recovery modalities, deload programming, longevity-focused periodization.</p>
+          <div class="section-item__deliverables">
+            <span class="deliverable-tag">Recovery Protocols</span>
+            <span class="deliverable-tag">Deload Templates</span>
+            <span class="deliverable-tag">Sleep Guide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── METHOD CTA ──────────────────────────────────────── -->
+  <section class="method-cta">
+    <div class="container fade-in">
+      <span class="eyebrow">Ready to Start?</span>
+      <h2>Every Section. One System.<br>Pick Your Entry Point.</h2>
+      <p>Start with the free 30-Day Reset if you're new to structured movement. Jump into Bodyweight Foundations if you're ready to commit to the system. Apply for coaching if you want it built around you specifically.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="programs.html" class="btn btn-primary">Browse All Programs →</a>
+        <a href="about.html" class="btn btn-outline">About Kenneth →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo" style="margin-bottom:0.75rem;display:inline-flex;">
+            <div class="nav__logo-mark">MM</div>
+            Monger Method
+          </a>
+          <p>A movement education system for people who want to build a body they can trust — for life.</p>
+        </div>
+        <div class="footer__col">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="method.html">The Method</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html#coaching">Work With Me</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="mailto:hello@mongermethod.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Monger Method. All rights reserved.</span>
+        <span>mongermethod.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
