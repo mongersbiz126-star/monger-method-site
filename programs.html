@@ -319,6 +319,11 @@
           <span class="rung__label">Bodyweight Foundations</span>
           <span class="rung__desc">6-week entry program</span>
         </div>
+        <div class="rung">
+          <span class="rung__price">$10</span>
+          <span class="rung__label">7-Day Reset</span>
+          <span class="rung__desc">Quick entry point</span>
+        </div>
       </div>
     </div>
   </section>
@@ -332,6 +337,30 @@
       </div>
 
       <div class="fade-in">
+        <!-- 7-Day Reset -->
+        <div class="prog-card">
+          <div class="prog-card__meta">
+            <div class="prog-card__tier">Entry Point</div>
+            <h3>7-Day Reset</h3>
+            <div class="prog-card__price">$10 <span>one-time</span></div>
+          </div>
+          <div class="prog-card__details">
+            <h4>What You're Getting</h4>
+            <p>Seven days to reset your movement baseline. No equipment, no fluff — just a structured week built on the Monger Method framework to establish the habits and movement patterns everything else is built on. The lowest barrier entry into the system.</p>
+            <ul class="prog-includes">
+              <li>7-day structured movement reset</li>
+              <li>Zero equipment required</li>
+              <li>Daily sessions under 30 minutes</li>
+              <li>Movement cues and coaching notes included</li>
+              <li>Digital PDF, instant download</li>
+            </ul>
+          </div>
+          <div class="prog-card__cta">
+            <a href="https://mongersbiz.gumroad.com" target="_blank" class="btn btn-ghost">Get the Reset — $10 →</a>
+            <a href="method.html" class="btn btn-outline" style="font-size:0.72rem;">Learn More</a>
+          </div>
+        </div>
+
         <!-- Bodyweight Foundations -->
         <div class="prog-card">
           <div class="prog-card__meta">
@@ -477,43 +506,4 @@
         <div class="footer__col">
           <h5>Navigate</h5>
           <ul>
-            <li><a href="method.html">The Method</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="programs.html#coaching">Work With Me</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h5>Connect</h5>
-          <ul>
-            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="mailto:hello@mongermethod.com">Email</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>© 2026 The Monger Method. All rights reserved.</span>
-        <span>mongermethod.com</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
-  <script>
-    function handleCoachingApply(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = 'Application Received.';
-      btn.disabled = true;
-      btn.style.background = 'var(--charcoal)';
-      btn.style.borderColor = 'var(--charcoal)';
-      btn.style.color = 'var(--orange)';
-      const msg = document.createElement('p');
-      msg.textContent = "I'll be in touch within 48 hours.";
-      msg.style.cssText = 'color:var(--orange);font-size:0.85rem;margin-top:0.75rem;font-weight:600;';
-      e.target.after(msg);
-    }
-  </script>
-</body>
-</html>
+            <li>
