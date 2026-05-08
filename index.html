@@ -438,6 +438,48 @@
       .method-grid { grid-template-columns: 1fr; }
     }
   </style>
+
+  <style id="assess-styles">
+    .assessment-section { padding: 6rem 0; background: var(--black); }
+    .assessment-split { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--charcoal-2); }
+    .assessment-left { padding: 3rem; background: var(--black); border-right: 1px solid var(--charcoal-2); display: flex; flex-direction: column; justify-content: center; }
+    .assessment-headline { font-size: clamp(1.4rem, 2.2vw, 1.9rem); margin: 0.75rem 0 1rem; line-height: 1.15; }
+    .assessment-headline em { font-style: normal; color: var(--orange); }
+    .assessment-sub { font-size: 0.88rem; opacity: 0.6; line-height: 1.7; margin-bottom: 1.5rem; }
+    .assessment-meta { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.75rem; }
+    .assessment-meta span { font-size: 0.78rem; color: var(--cream); opacity: 0.55; }
+    .assessment-start-btn { align-self: flex-start; }
+    .assessment-note { font-size: 0.72rem; opacity: 0.28; margin: 0.75rem 0 0; }
+    .assessment-right { background: var(--charcoal); padding: 2.5rem 2.25rem; display: flex; flex-direction: column; justify-content: center; min-height: 380px; }
+    .assess-q-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+    .assess-q-label span:first-child { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); }
+    .assess-q-label span:last-child { font-size: 0.65rem; color: var(--cream); opacity: 0.35; }
+    .assess-question { font-size: 1rem; font-weight: 700; color: var(--cream); line-height: 1.4; margin-bottom: 1.25rem; }
+    .assess-choices { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
+    .assess-choice { background: var(--black); border: 1px solid var(--charcoal-2); padding: 0.75rem 1rem; font-size: 0.82rem; color: var(--cream); opacity: 0.7; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 0.75rem; user-select: none; }
+    .assess-choice:hover { border-color: var(--orange); opacity: 0.9; }
+    .assess-choice.selected { border-color: var(--orange); background: rgba(200,114,42,0.08); opacity: 1; }
+    .assess-choice-dot { width: 8px; height: 8px; border: 1.5px solid var(--orange); border-radius: 50%; flex-shrink: 0; transition: background 0.15s; }
+    .assess-choice.selected .assess-choice-dot { background: var(--orange); }
+    .assess-bar-wrap { margin-bottom: 1.25rem; }
+    .assess-bar { height: 2px; background: var(--charcoal-2); border-radius: 1px; overflow: hidden; margin-bottom: 0.4rem; }
+    .assess-bar-fill { height: 100%; background: var(--orange); border-radius: 1px; transition: width 0.3s ease; }
+    .assess-bar-label { font-size: 0.65rem; color: var(--cream); opacity: 0.25; }
+    .assess-next { align-self: flex-end; font-size: 0.78rem; padding: 0.6rem 1.5rem; cursor: pointer; }
+    .assess-next:disabled { opacity: 0.25; cursor: not-allowed; }
+    .assess-result-inner { display: flex; flex-direction: column; gap: 0.75rem; }
+    .assess-result-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); }
+    .assess-result-phase { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); opacity: 0.8; }
+    .assess-result-program { font-size: 1.4rem; font-weight: 700; color: var(--cream); letter-spacing: -0.02em; line-height: 1.2; }
+    .assess-result-desc { font-size: 0.82rem; opacity: 0.6; line-height: 1.65; margin: 0; }
+    .assess-retake { background: none; border: none; color: var(--cream); opacity: 0.3; font-size: 0.72rem; cursor: pointer; padding: 0; font-family: var(--font); transition: opacity 0.2s; margin-top: 0.5rem; }
+    .assess-retake:hover { opacity: 0.7; }
+    @media (max-width: 768px) {
+      .assessment-split { grid-template-columns: 1fr; }
+      .assessment-left { border-right: none; border-bottom: 1px solid var(--charcoal-2); padding: 2.5rem 1.5rem; }
+      .assessment-right { padding: 2rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -485,7 +527,7 @@
             <p class="hero__opt-in-label">Free Guide — Start Here</p>
             <form class="email-form">
               <input type="email" class="form-input" placeholder="Your email address" />
-              <button type="submit" class="btn btn-primary">Get Free Guide</button>
+              <button type="submit" class="btn btn-primary">Get Free guide</button>
             </form>
           </div>
           <a href="programs.html" class="btn btn-outline" style="width:fit-content;">Browse Programs</a>
@@ -754,6 +796,76 @@
       </div>
     </div>
   </div>
+  <div class="section-divider-wrap mid">
+    <div class="container">
+      <div class="section-divider">
+        <div class="section-divider__bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="section-divider__rule"></div>
+        <div class="section-divider__label">Assessment</div>
+        <div class="section-divider__rule"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ASSESSMENT ──────────────────────────────────────── -->
+  <section class="assessment-section">
+    <div class="container">
+      <div class="assessment-split fade-in">
+        <div class="assessment-left">
+          <span class="eyebrow">Free · 3 Minutes</span>
+          <h2 class="assessment-headline">Not sure where<br>to start?<br><em>Take the assessment.</em></h2>
+          <p class="assessment-sub">8 questions based on the Monger Method movement diagnostic. We'll match you to the right program based on where you actually are — not where you think you should be.</p>
+          <div class="assessment-meta">
+            <span>&#10003; Foundational movement</span>
+            <span>&#10003; Mobility &amp; stability</span>
+            <span>&#10003; Athletic capacity</span>
+          </div>
+          <a href="#assessPanel" class="btn btn-primary assessment-start-btn" id="assessStartBtn">Start the Assessment &#8594;</a>
+          <p class="assessment-note">No email required</p>
+        </div>
+        <div class="assessment-right" id="assessPanel">
+          <div id="assessQuiz">
+            <div class="assess-q-label">
+              <span id="assessCat">Foundational Movement</span>
+              <span id="assessProgress">Question <span id="assessQNum">1</span> of 8</span>
+            </div>
+            <div class="assess-question" id="assessQuestion"></div>
+            <div class="assess-choices" id="assessChoices"></div>
+            <div class="assess-bar-wrap">
+              <div class="assess-bar"><div class="assess-bar-fill" id="assessBarFill" style="width:12.5%"></div></div>
+              <div class="assess-bar-label" id="assessBarLabel">1 / 8</div>
+            </div>
+            <button class="btn btn-ghost assess-next" id="assessNext" disabled>Next &#8594;</button>
+          </div>
+          <div id="assessResult" style="display:none;">
+            <div class="assess-result-inner">
+              <div class="assess-result-eyebrow">Your Result</div>
+              <div class="assess-result-phase" id="assessPhase"></div>
+              <div class="assess-result-program" id="assessProgram"></div>
+              <p class="assess-result-desc" id="assessDesc"></p>
+              <a href="https://mongersbiz.gumroad.com" target="_blank" class="btn btn-primary" id="assessCta" style="align-self:flex-start;margin-top:0.5rem;"></a>
+              <button class="assess-retake" id="assessRetake">Retake assessment &#8635;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider-wrap">
+    <div class="container">
+      <div class="section-divider">
+        <div class="section-divider__bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="section-divider__rule"></div>
+        <div class="section-divider__label">Results</div>
+        <div class="section-divider__rule"></div>
+      </div>
+    </div>
+  </div>
   <!-- ── TESTIMONIALS ────────────────────────────────────── -->
   <section class="testimonials">
     <div class="container">
@@ -794,6 +906,110 @@
           <h5>Navigate</h5>
           <ul>
             <li><a href="method.html">The Method</a></li>
-            <li><a href="programs.html">Programs</a></li>
+          <li><a href="programs.html">Programs</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="programs.html#coaching">Wo
+            <li><a href="programs.html#coaching">Work With Me</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+            <li><a href="mailto:hello@mongermethod.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Monger Method. All rights reserved.</span>
+        <span>mongermethod.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <script>
+  (function(){
+    var questions = [
+      { cat: 'Foundational Movement', q: 'How would you describe your current squat?', choices: ['Cannot squat without falling forward or pain','I squat but my heels rise or knees cave','Decent squat but I feel stiff or unbalanced','Clean, controlled squat — full depth no problem'], pts: [0,1,2,3] },
+      { cat: 'Foundational Movement', q: 'Can you hinge at the hip with a flat back (like a deadlift)?', choices: ['No — my back rounds or I don't know what that means','I try but I feel it in my lower back','I can do it with focus but it's not automatic','Yes — hip hinge is clean and feels natural'], pts: [0,1,2,3] },
+      { cat: 'Foundational Movement', q: 'How many clean push-ups can you do in a row?', choices: ['0 — I can't do a full push-up yet','1–5 with some back sagging or short range','6–15 with decent form','15+ clean reps, chest to floor'], pts: [0,1,2,3] },
+      { cat: 'Mobility & Stability', q: 'Can you sit in a 90/90 hip position on the floor without your hands?', choices: ['No — hips are too tight to get into that position','I can get in but need hands for support','I can hold it but one side is noticeably tighter','Both sides comfortable, upright torso no problem'], pts: [0,1,2,3] },
+      { cat: 'Mobility & Stability', q: 'Stand on one leg with eyes closed — how long can you hold it?', choices: ['Less than 3 seconds before I lose balance','3–5 seconds with a lot of wobble','5–10 seconds with minor sway','10+ seconds, solid on both sides'], pts: [0,1,2,3] },
+      { cat: 'Mobility & Stability', q: 'When you reach overhead (both arms), what happens?', choices: ['Arms won't go fully straight or I arch my back hard','Arms go up but I feel restriction in shoulders or upper back','Pretty good — minor compensation','Full overhead, rib cage down, no arching'], pts: [0,1,2,3] },
+      { cat: 'Athletic Capacity', q: 'How would you describe your ability to jump and land safely?', choices: ['I avoid jumping — knees or joints are an issue','I can jump but my landing is loud or unstable','Decent landing mechanics — soft knees, controlled','I land quietly and absorb force well on both legs'], pts: [0,1,2,3] },
+      { cat: 'Athletic Capacity', q: 'How long have you been training consistently (any format)?', choices: ['I'm just starting or returning after a long break','Less than 6 months of consistent training','6 months to 2 years','2+ years of structured, consistent training'], pts: [0,1,2,3] }
+    ];
+
+    var results = [
+      { min:0, max:8,  phase:'Phase 1 — Reset', program:'7-Day Reset', price:'$10', desc:'Fundamental movement gaps present. Start here: 7 days to reset your baseline, rebuild patterns, and prepare the body for structured loading.', cta:'Get the 7-Day Reset — $10 →' },
+      { min:9, max:14, phase:'Phase 1 — Foundation', program:'Bodyweight Foundations', price:'$30', desc:'Movement present but compensations visible. The 6-week Bodyweight Foundations program addresses your gaps before adding load.', cta:'Start Bodyweight Foundations — $30 →' },
+      { min:15, max:20, phase:'Phase 2 — Performance', program:'Bands Performance Program', price:'$50', desc:'Solid base. Ready for progressive loading. The Bands Performance Program takes you through the full Monger Method integration — 4 weeks.', cta:'Get Bands Performance — $50 →' },
+      { min:21, max:24, phase:'Phase 3 — Full System', program:'Full System Bundle', price:'$99', desc:'Strong structural foundation and athletic capacity. The Full System Bundle gives you every program in the stack — run the entire methodology.', cta:'Get the Full System Bundle — $99 →' }
+    ];
+
+    var current = 0, scores = [], selected = null;
+
+    function render() {
+      var q = questions[current];
+      document.getElementById('assessCat').textContent = q.cat;
+      document.getElementById('assessQNum').textContent = current + 1;
+      document.getElementById('assessProgress').innerHTML = 'Question <span id="assessQNum">' + (current+1) + '</span> of 8';
+      document.getElementById('assessQuestion').textContent = q.q;
+      var choicesEl = document.getElementById('assessChoices');
+      choicesEl.innerHTML = '';
+      selected = null;
+      document.getElementById('assessNext').disabled = true;
+      q.choices.forEach(function(text, i) {
+        var div = document.createElement('div');
+        div.className = 'assess-choice';
+        div.innerHTML = '<div class="assess-choice-dot"></div><span>' + text + '</span>';
+        div.addEventListener('click', function() {
+          document.querySelectorAll('.assess-choice').forEach(function(c){ c.classList.remove('selected'); });
+          div.classList.add('selected');
+          selected = i;
+          document.getElementById('assessNext').disabled = false;
+        });
+        choicesEl.appendChild(div);
+      });
+      var pct = ((current + 1) / 8 * 100).toFixed(0);
+      document.getElementById('assessBarFill').style.width = pct + '%';
+      document.getElementById('assessBarLabel').textContent = (current+1) + ' / 8';
+    }
+
+    function showResult() {
+      var total = scores.reduce(function(a,b){return a+b;}, 0);
+      var res = results[0];
+      for (var i = 0; i < results.length; i++) {
+        if (total >= results[i].min && total <= results[i].max) { res = results[i]; break; }
+      }
+      document.getElementById('assessQuiz').style.display = 'none';
+      document.getElementById('assessResult').style.display = 'block';
+      document.getElementById('assessPhase').textContent = res.phase;
+      document.getElementById('assessProgram').textContent = res.program + ' — ' + res.price;
+      document.getElementById('assessDesc').textContent = res.desc;
+      document.getElementById('assessCta').textContent = res.cta;
+    }
+
+    document.getElementById('assessNext').addEventListener('click', function() {
+      if (selected === null) return;
+      scores.push(questions[current].pts[selected]);
+      current++;
+      if (current >= questions.length) { showResult(); }
+      else { render(); }
+    });
+
+    document.getElementById('assessRetake').addEventListener('click', function() {
+      current = 0; scores = []; selected = null;
+      document.getElementById('assessResult').style.display = 'none';
+      document.getElementById('assessQuiz').style.display = 'block';
+      render();
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
+>
