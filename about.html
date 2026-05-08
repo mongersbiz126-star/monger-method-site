@@ -60,7 +60,7 @@
       flex-shrink: 0;
     }
 
-    /* ── Origin story —────────────────────────────────────── */
+    /* ── Origin story ─────────────────────────────────────── */
     .story { padding: 6rem 0; background: var(--charcoal); }
 
     .story__inner {
@@ -193,8 +193,13 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
-        <div class="nav__logo-mark">MM</div>
-        Monger Method
+        <div class="ladder-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="nav__logo-wordmark">
+          <span class="wm-top">MONGER</span>
+          <span class="wm-sub">METHOD</span>
+        </div>
       </a>
       <ul class="nav__links">
         <li><a href="method.html">The Method</a></li>
@@ -210,6 +215,9 @@
 
   <!-- ── PAGE HERO ──────────────────────────────────────── -->
   <section class="page-hero">
+    <div class="hero__ghost" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
     <div class="page-hero__inner">
       <div class="fade-in">
         <span class="eyebrow">The Person Behind the Method</span>
@@ -234,6 +242,18 @@
     </div>
   </section>
 
+  <div class="section-divider-wrap">
+    <div class="container">
+      <div class="section-divider">
+        <div class="section-divider__bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="section-divider__rule"></div>
+        <div class="section-divider__label">The Story</div>
+        <div class="section-divider__rule"></div>
+      </div>
+    </div>
+  </div>
   <!-- ── ORIGIN STORY ───────────────────────────────────── -->
   <section class="story">
     <div class="story__inner">
@@ -304,6 +324,30 @@
     </div>
   </section>
 
+  <div class="section-divider-wrap mid">
+    <div class="container">
+      <div class="section-divider">
+        <div class="section-divider__bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="section-divider__rule"></div>
+        <div class="section-divider__label">The Values</div>
+        <div class="section-divider__rule"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-divider-wrap mid">
+    <div class="container">
+      <div class="section-divider">
+        <div class="section-divider__bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="section-divider__rule"></div>
+        <div class="section-divider__label">The Values</div>
+        <div class="section-divider__rule"></div>
+      </div>
+    </div>
+  </div>
   <!-- ── VALUES ─────────────────────────────────────────── -->
   <section class="values">
     <div class="container">
@@ -346,12 +390,24 @@
     </div>
   </section>
 
+  <div class="section-divider-wrap">
+    <div class="container">
+      <div class="section-divider">
+        <div class="section-divider__bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="section-divider__rule"></div>
+        <div class="section-divider__label">Get Started</div>
+        <div class="section-divider__rule"></div>
+      </div>
+    </div>
+  </div>
   <!-- ── ABOUT CTA ───────────────────────────────────────── -->
   <section class="about-cta">
     <div class="container fade-in">
       <span class="eyebrow">Next Step</span>
       <h2>Understand the System.<br>Then Start It.</h2>
-      <p>The method page gives you the full framework — all seven sections, the progression logic, and what you're actually building. Then, when you'ready, pick your entry point in the programs section.</p>
+      <p>The method page gives you the full framework — all seven sections, the progression logic, and what you're actually building. Then, when you're ready, pick your entry point in the programs section.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
         <a href="method.html" class="btn btn-primary">Read the Method →</a>
         <a href="programs.html" class="btn btn-outline">Browse Programs →</a>
@@ -364,10 +420,11 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="index.html" class="nav__logo" style="margin-bottom:0.75rem;display:inline-flex;">
-            <div class="nav__logo-mark">MM</div>
-            Monger Method
-          </a>
+          <div class="footer__stamp">
+            <span class="footer__stamp-big">MONGER</span>
+            <div class="footer__stamp-rule"></div>
+            <span class="footer__stamp-sub">METHOD</span>
+          </div>
           <p>A movement education system for people who want to build a body they can trust — for life.</p>
         </div>
         <div class="footer__col">
